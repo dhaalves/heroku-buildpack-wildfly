@@ -65,19 +65,19 @@ done
 
 # 2) create postgresql module
 echo "-----> Postgres module Creating... "
-$JBOSS_HOME/bin/jboss-cli.sh --connect --command="module add --name=org.postgresql --resources=$BUILD_DIR/postgresql-$POSTGRESQL_VERSION.jar --dependencies=javax.api,javax.transaction.api"
+#$JBOSS_HOME/bin/jboss-cli.sh --connect --command="module add --name=org.postgresql --resources=$BUILD_DIR/postgresql-$POSTGRESQL_VERSION.jar --dependencies=javax.api,javax.transaction.api"
 echo "-----> Postgres module Created... "
 
 # 3) install driver
 echo "-----> JDBC driver installing ... "
-$JBOSS_HOME/bin/jboss-cli.sh --connect --command="/subsystem=datasources/jdbc-driver=postgresql:add(driver-name=postgresql,driver-module-name=org.postgresql,driver-xa-datasource-class-name=org.postgresql.xa.PGXADataSource)"
+#$JBOSS_HOME/bin/jboss-cli.sh --connect --command="/subsystem=datasources/jdbc-driver=postgresql:add(driver-name=postgresql,driver-module-name=org.postgresql,driver-xa-datasource-class-name=org.postgresql.xa.PGXADataSource)"
 
-$JBOSS_HOME/bin/jboss-cli.sh --connect --command="/subsystem=datasources:installed-drivers-list"
+#$JBOSS_HOME/bin/jboss-cli.sh --connect --command="/subsystem=datasources:installed-drivers-list"
 echo "-----> JDBC driver installed ... "
 
 # 4) shutdown
 echo "-----> shutdown WildFly ... "
-$JBOSS_HOME/bin/jboss-cli.sh --connect command=:shutdown
+#$JBOSS_HOME/bin/jboss-cli.sh --connect command=:shutdown
 
 echo -n "-----> Deploying war file(s)... "
 cp target/*.war $JBOSS_HOME/standalone/deployments/
