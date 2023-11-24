@@ -45,7 +45,7 @@ echo "done"
 
 
 echo "-----> Downloading Postgres driver ${POSTGRESQL_VERSION}... "
-curl -L -O https://repo1.maven.org/maven2/org/postgresql/postgresql/${POSTGRESQL_VERSION}/postgresql-${POSTGRESQL_VERSION}.jar  
+# curl -L -O https://repo1.maven.org/maven2/org/postgresql/postgresql/${POSTGRESQL_VERSION}/postgresql-${POSTGRESQL_VERSION}.jar  
 echo "-----> downloaded"
 # sha1sum postgresql-${POSTGRESQL_VERSION}.jar | grep $POSTGRESQL_SHA1 > /dev/null 2>&1
 # echo "-----> verified"
@@ -53,15 +53,15 @@ echo "-----> downloaded"
 
 # 1) startup
 echo "-----> Starting WildFly ... "
-$JBOSS_HOME/bin/standalone.sh --admin-only &
+# $JBOSS_HOME/bin/standalone.sh --admin-only &
 
 WILDFLY_RUNNING=1
 
-until [ $WILDFLY_RUNNING -eq 0 ]; do
-	$JBOSS_HOME/bin/jboss-cli.sh --connect --command=":read-attribute(name=server-state)"
-	WILDFLY_RUNNING=$?
-	sleep 3
-done	
+#until [ $WILDFLY_RUNNING -eq 0 ]; do
+#	$JBOSS_HOME/bin/jboss-cli.sh --connect --command=":read-attribute(name=server-state)"
+#	WILDFLY_RUNNING=$?
+#	sleep 3
+#done	
 
 # 2) create postgresql module
 echo "-----> Postgres module Creating... "
